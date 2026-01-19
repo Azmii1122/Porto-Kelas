@@ -151,7 +151,7 @@ const studentsData = [
     name: "Denissa Rahma Putri (Ketua)",
     nim: "607012500052",
     role: "Fullstack Dev",
-    image: "/public/image/denisa.jpg", // Path diperbaiki
+    image: "/public/image/Denisa.jpg", // Path diperbaiki
     bio: "Tulis deskripsi singkat atau kata-kata mutiara mahasiswa ini di sini.",
     projects: "Olahin",
     skills: ["HTML", "CSS", "Figma"],
@@ -1164,7 +1164,7 @@ const App = () => {
               <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group w-[92%] mx-auto mb-12">
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent z-10"></div>
                 <img 
-                  src="/assets/class_photo.jpg" 
+                  src="/public/image/class_photo.jpg" 
                   alt="Foto Kelas Formal" 
                   className="w-full h-auto transform group-hover:scale-105 transition-transform duration-1000"
                 />

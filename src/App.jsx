@@ -5,8 +5,8 @@ import {
   Camera, 
   ChevronDown, 
   ChevronUp, 
-  ChevronLeft, // Added fix
-  ChevronRight, // Added fix
+  ChevronLeft,
+  ChevronRight,
   Github, 
   Instagram, 
   Linkedin, 
@@ -44,7 +44,7 @@ const customStyles = `
 
   /* Custom Scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
   ::-webkit-scrollbar-track {
     background: #0f172a; 
@@ -60,18 +60,18 @@ const customStyles = `
   /* Animations */
   @keyframes float {
     0% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+    50% { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
   }
 
   @keyframes pulse-glow {
     0% { box-shadow: 0 0 0 0 var(--primary-glow); }
-    70% { box-shadow: 0 0 0 15px rgba(59, 130, 246, 0); }
+    70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
     100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
   }
 
   @keyframes slide-in-right {
-    from { transform: translateX(50px); opacity: 0; }
+    from { transform: translateX(30px); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
   }
 
@@ -85,7 +85,7 @@ const customStyles = `
   }
 
   .animate-float {
-    animation: float 6s ease-in-out infinite;
+    animation: float 4s ease-in-out infinite;
   }
 
   .animate-pulse-glow {
@@ -97,15 +97,15 @@ const customStyles = `
   }
 
   .glass-card {
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.08);
   }
   
   .glass-card:hover {
-    background: rgba(30, 41, 59, 0.7);
-    border-color: rgba(59, 130, 246, 0.3);
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(59, 130, 246, 0.4);
   }
 
   .glass-input {
@@ -122,7 +122,7 @@ const customStyles = `
   }
 
   .hero-gradient {
-    background: radial-gradient(circle at 50% 50%, #172554 0%, #020617 50%);
+    background: radial-gradient(circle at 50% 50%, #172554 0%, #020617 60%);
   }
   
   .text-glow {
@@ -988,92 +988,69 @@ const ProjectCard = ({ project }) => (
   </div>
 );
 
+// --- MODAL LAYOUT FIXED (FULL SCREEN RESPONSIVE) ---
 const StudentModal = ({ student, onClose }) => {
   if (!student) return null;
   
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-slate-950/90 backdrop-blur-md" onClick={onClose}></div>
-      <div className="bg-slate-900 w-full max-w-4xl rounded-3xl border border-blue-500/20 shadow-2xl shadow-blue-900/20 relative z-10 overflow-hidden flex flex-col md:flex-row animate-fadeInUp">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6">
+      {/* Overlay Gelap */}
+      <div className="absolute inset-0 bg-slate-950/95 backdrop-blur-md" onClick={onClose}></div>
+      
+      {/* Modal Container */}
+      <div className="bg-slate-900 w-full max-w-5xl h-[85vh] sm:h-auto rounded-3xl border border-blue-500/20 shadow-2xl shadow-blue-900/20 relative z-10 flex flex-col md:flex-row animate-fadeInUp overflow-hidden">
         
-        {/* Sidebar Image */}
-        <div className="w-full md:w-2/5 bg-slate-800/50 relative p-8 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-white/5">
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-500/5 to-transparent"></div>
+        {/* Tombol Close Fixed agar selalu terlihat */}
+        <button 
+          onClick={onClose} 
+          className="absolute top-4 right-4 z-50 p-2 bg-slate-800/80 hover:bg-red-500/20 text-slate-400 hover:text-red-500 rounded-full transition-all backdrop-blur-sm border border-white/5"
+        >
+          <X size={24} />
+        </button>
+
+        {/* Sidebar Image (Mobile: Top, Desktop: Left) */}
+        <div className="w-full md:w-2/5 bg-slate-800/50 relative p-8 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-white/5 shrink-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-500/5 to-transparent pointer-events-none"></div>
           <img 
             src={student.image} 
             alt={student.name} 
-            className="w-48 h-48 rounded-full border-4 border-blue-500 shadow-xl shadow-blue-500/20 mb-6 relative z-10 object-cover bg-slate-800"
+            className="w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-blue-500 shadow-xl shadow-blue-500/20 mb-4 md:mb-6 relative z-10 object-cover bg-slate-800"
             onError={handleImageError}
             loading="lazy"
           />
-          <h2 className="text-2xl font-bold text-white relative z-10">{student.name}</h2>
-          <p className="text-blue-400 font-mono text-sm relative z-10 mb-8">{student.nim}</p>
+          <h2 className="text-xl md:text-2xl font-bold text-white relative z-10 px-2">{student.name}</h2>
+          <p className="text-blue-400 font-mono text-sm relative z-10 mb-4 md:mb-8">{student.nim}</p>
           
           <div className="flex gap-3 relative z-10">
-            <a 
-              href={student.socials.instagram} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="p-3 bg-slate-800 rounded-xl hover:bg-blue-600 hover:text-white text-slate-400 transition-all border border-slate-700 hover:border-blue-500 hover:-translate-y-1 flex items-center justify-center"
-            >
-              <Instagram size={20} />
-            </a>
-            
-            <a 
-              href={student.socials.linkedin} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="p-3 bg-slate-800 rounded-xl hover:bg-blue-600 hover:text-white text-slate-400 transition-all border border-slate-700 hover:border-blue-500 hover:-translate-y-1 flex items-center justify-center"
-            >
-              <Linkedin size={20} />
-            </a>
-            
-            <a 
-              href={student.socials.github} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="p-3 bg-slate-800 rounded-xl hover:bg-blue-600 hover:text-white text-slate-400 transition-all border border-slate-700 hover:border-blue-500 hover:-translate-y-1 flex items-center justify-center"
-            >
-              <Github size={20} />
-            </a>
+            <a href={student.socials.instagram} target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-800 rounded-xl hover:bg-blue-600 hover:text-white text-slate-400 transition-all border border-slate-700 hover:border-blue-500 hover:-translate-y-1 flex items-center justify-center"><Instagram size={20} /></a>
+            <a href={student.socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-800 rounded-xl hover:bg-blue-600 hover:text-white text-slate-400 transition-all border border-slate-700 hover:border-blue-500 hover:-translate-y-1 flex items-center justify-center"><Linkedin size={20} /></a>
+            <a href={student.socials.github} target="_blank" rel="noopener noreferrer" className="p-3 bg-slate-800 rounded-xl hover:bg-blue-600 hover:text-white text-slate-400 transition-all border border-slate-700 hover:border-blue-500 hover:-translate-y-1 flex items-center justify-center"><Github size={20} /></a>
           </div>
         </div>
 
-        {/* Content */}
-        <div className="flex-1 p-8 md:p-12 relative overflow-y-auto max-h-[60vh] md:max-h-auto">
-          <button onClick={onClose} className="absolute top-6 right-6 text-slate-500 hover:text-white transition-colors bg-slate-800/50 p-2 rounded-full"><X size={20} /></button>
-          
+        {/* Content (Mobile: Bottom Scrollable, Desktop: Right) */}
+        <div className="flex-1 p-6 md:p-10 relative overflow-y-auto">
           <div className="mb-8">
-            <h3 className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-3 flex items-center gap-2">
-              <Users size={14} /> About Me
-            </h3>
-            <p className="text-slate-300 leading-relaxed text-lg font-light">{student.bio}</p>
+            <h3 className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-3 flex items-center gap-2"><Users size={14} /> About Me</h3>
+            <p className="text-slate-300 leading-relaxed text-base font-light">{student.bio}</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-8">
             <div className="bg-slate-800/30 p-4 rounded-xl border border-white/5">
-              <h3 className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-2 flex items-center gap-2">
-                 <Monitor size={14} /> Role
-              </h3>
-              <p className="text-white font-medium text-lg">{student.role}</p>
+              <h3 className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-2 flex items-center gap-2"><Monitor size={14} /> Role</h3>
+              <p className="text-white font-medium">{student.role}</p>
             </div>
             <div className="bg-slate-800/30 p-4 rounded-xl border border-white/5">
-              <h3 className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-2 flex items-center gap-2">
-                 <Code size={14} /> Project
-              </h3>
-              <p className="text-white font-medium text-lg">{student.projects}</p>
+              <h3 className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-2 flex items-center gap-2"><Code size={14} /> Project</h3>
+              <p className="text-white font-medium">{student.projects}</p>
             </div>
           </div>
 
-          <div>
-            <h3 className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-3 flex items-center gap-2">
-               <Zap size={14} /> Skills
-            </h3>
+          <div className="pb-8">
+            <h3 className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-3 flex items-center gap-2"><Zap size={14} /> Skills</h3>
             <div className="flex flex-wrap gap-2">
               {student.skills.map(skill => (
-                <span key={skill} className="px-4 py-2 bg-slate-800 text-slate-200 rounded-lg text-sm border border-slate-700 hover:border-blue-500 transition-colors">
-                  {skill}
-                </span>
+                <span key={skill} className="px-4 py-2 bg-slate-800 text-slate-200 rounded-lg text-sm border border-slate-700 hover:border-blue-500 transition-colors">{skill}</span>
               ))}
             </div>
           </div>
@@ -1088,7 +1065,7 @@ const App = () => {
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [filter, setFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [visibleMemories, setVisibleMemories] = useState(6); // Added state for memories
+  const [visibleMemories, setVisibleMemories] = useState(6);
 
   const filteredStudents = studentsData.filter(s => {
     const matchesRole = filter === "All" || s.role === filter;
@@ -1105,11 +1082,7 @@ const App = () => {
       const navbarOffset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - navbarOffset;
-  
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
   };
 
@@ -1144,7 +1117,7 @@ const App = () => {
               <span className="text-sm font-semibold text-blue-300 tracking-wider">TELKOM UNIVERSITY 2025</span>
             </div>
             
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-8 tracking-tight leading-tight animate-fadeInUp">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 tracking-tight leading-tight animate-fadeInUp">
               We are <br className="md:hidden" /> 
               <TypingText textArray={["Developers", "Designers", "Innovators", "D3SI-49-04"]} />
             </h1>
@@ -1155,94 +1128,63 @@ const App = () => {
             </p>
 
             <div className="flex flex-col md:flex-row justify-center gap-6 animate-fadeInUp delay-300">
-              <button 
-                onClick={() => scrollToSection('about')}
-                className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all hover:scale-105 hover:shadow-lg hover:shadow-blue-600/30 flex items-center justify-center gap-3"
-              >
+              <button onClick={() => scrollToSection('about')} className="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all hover:scale-105 hover:shadow-lg hover:shadow-blue-600/30 flex items-center justify-center gap-3">
                 Start Journey <ArrowRight size={20} />
               </button>
-              <button 
-                 onClick={() => scrollToSection('students')}
-                 className="px-8 py-4 bg-transparent border border-white/10 hover:bg-white/5 hover:border-blue-500/50 text-white font-medium rounded-xl transition-all flex items-center justify-center gap-3"
-              >
+              <button onClick={() => scrollToSection('students')} className="px-8 py-4 bg-transparent border border-white/10 hover:bg-white/5 hover:border-blue-500/50 text-white font-medium rounded-xl transition-all flex items-center justify-center gap-3">
                 View Students <Users size={20} />
               </button>
             </div>
           </div>
-
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-blue-500/50">
-            <ChevronDown size={32} />
-          </div>
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-blue-500/50"><ChevronDown size={32} /></div>
         </section>
 
-        {/* --- ABOUT & LECTURER --- */}
+        {/* --- ABOUT --- */}
         <section id="about" className="py-32 relative bg-slate-900/50 border-t border-white/5">
           <div className="container mx-auto px-6 relative z-10">
-            
             <ScrollReveal>
                <div className="text-center mb-16">
                  <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">About <span className="text-blue-500">Our Class</span></h2>
-                 <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-                   D3SI-49-04 adalah rumah bagi 28 mahasiswa D3 Sistem Informasi yang berdedikasi.
-                   Kami belajar, tumbuh, dan berinovasi bersama di Telkom University.
-                 </p>
+                 <p className="text-slate-400 max-w-2xl mx-auto text-lg">D3SI-49-04 adalah rumah bagi 28 mahasiswa D3 Sistem Informasi yang berdedikasi.</p>
                </div>
             </ScrollReveal>
 
-            {/* CLASS PHOTO (FULL WIDTH) */}
+            {/* CLASS PHOTO: Fixed Overlay Issue */}
             <ScrollReveal>
               <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group w-[92%] mx-auto mb-12">
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent z-10"></div>
-                <img 
-                  src="/Image/class_photo.jpg" 
-                  alt="Foto Kelas Formal" 
-                  className="w-full h-auto transform group-hover:scale-105 transition-transform duration-1000"
-                />
-                <div className="absolute bottom-0 left-0 w-full p-8 md:p-12 z-20 flex justify-between items-end">
-                  <div>
-                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">Together We Achieve More</h3>
-                    <p className="text-slate-300"> Class of 2025 • D3 Sistem Informasi</p>
+                <img src="/Image/class_photo.jpg" alt="Foto Kelas Formal" className="w-full h-auto transform group-hover:scale-105 transition-transform duration-1000" />
+                
+                {/* Mobile: Teks di bawah foto (biar ga nutupin) | Desktop: Overlay di pojok */}
+                <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 z-20 flex justify-center md:justify-start items-end bg-gradient-to-t from-slate-900/90 to-transparent md:bg-none">
+                  <div className="text-center md:text-left">
+                    <h3 className="text-lg md:text-4xl font-bold text-white mb-1 md:mb-2">Together We Achieve More</h3>
+                    <p className="text-slate-300 text-xs md:text-base"> Class of 2025 • D3 Sistem Informasi</p>
                   </div>
                 </div>
               </div>
             </ScrollReveal>
             
-
-            {/* LECTURER CARD (BELOW PHOTO, CENTERED) */}
             <ScrollReveal delay={200}>
               <div className="max-w-4xl mx-auto bg-gradient-to-br from-slate-900 to-slate-800 border border-blue-500/20 rounded-3xl p-8 md:p-12 relative overflow-hidden flex flex-col md:flex-row items-center gap-8 shadow-2xl">
-                 <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-                 
                  <div className="relative shrink-0">
                    <div className="w-32 h-32 md:w-40 md:h-40 rounded-full p-1 bg-gradient-to-br from-blue-500 to-cyan-400">
                      <img src={lecturerData.image} alt={lecturerData.name} className="w-full h-full rounded-full object-cover border-2 border-slate-900" />
                    </div>
-                   <div className="absolute -bottom-1 -right-1 bg-blue-600 p-1.5 rounded-full text-white border-4 border-slate-900">
-                     <Award size={20} />
-                   </div>
+                   <div className="absolute -bottom-1 -right-1 bg-blue-600 p-1.5 rounded-full text-white border-4 border-slate-900"><Award size={20} /></div>
                  </div>
-
                  <div className="text-center md:text-left">
                    <div className="text-blue-400 text-xs font-bold uppercase tracking-wider mb-2">Dosen Wali</div>
                    <h3 className="text-2xl font-bold text-white mb-2">{lecturerData.name}</h3>
                    <p className="text-slate-500 mb-4">{lecturerData.role}</p>
-
-                   <blockquote className="text-lg text-slate-300 italic mb-6 border-l-4 border-blue-500 pl-4 leading-relaxed">
-                      "{lecturerData.quote}"
-                   </blockquote>
-                   
-                   <a href={`mailto:${lecturerData.email}`} className="inline-flex items-center justify-center gap-2 text-white bg-slate-700 hover:bg-blue-600 px-6 py-2.5 rounded-xl transition-all font-medium border border-slate-600 hover:border-blue-500 text-sm">
-                      <Mail size={16} /> Contact Lecturer
-                   </a>
+                   <blockquote className="text-lg text-slate-300 italic mb-6 border-l-4 border-blue-500 pl-4 leading-relaxed">"{lecturerData.quote}"</blockquote>
+                   <a href={`mailto:${lecturerData.email}`} className="inline-flex items-center justify-center gap-2 text-white bg-slate-700 hover:bg-blue-600 px-6 py-2.5 rounded-xl transition-all font-medium border border-slate-600 hover:border-blue-500 text-sm"><Mail size={16} /> Contact Lecturer</a>
                  </div>
               </div>
             </ScrollReveal>
-
-            {/* Student Slider Section */}
-            <ScrollReveal delay={300}>
+             <ScrollReveal delay={300}>
                <StudentSlider students={studentsData} onSelect={setSelectedStudent} />
             </ScrollReveal>
-
           </div>
         </section>
 
@@ -1250,48 +1192,24 @@ const App = () => {
         <section id="students" className="py-32 bg-slate-950 relative">
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
           <div className="container mx-auto px-6">
-            
-            {/* NEW HEADER LAYOUT (CENTERED) */}
             <div className="flex flex-col items-center justify-center text-center mb-16 gap-8">
-              
               <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">All <span className="text-blue-500">Students</span></h2>
+                <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">All <span className="text-blue-500">Students</span></h2>
                 <p className="text-slate-400 text-lg max-w-2xl mx-auto">Daftar lengkap anggota kelas D3SI-49-04.</p>
               </div>
-
-              {/* Search Bar - Centered */}
               <div className="relative w-full max-w-lg">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-                <input 
-                  type="text" 
-                  placeholder="Cari nama atau NIM..." 
-                  className="w-full pl-12 pr-6 py-4 glass-input rounded-full text-white focus:outline-none transition-all border border-slate-700 focus:border-blue-500 bg-slate-900/80 shadow-2xl focus:shadow-blue-500/20"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
+                <input type="text" placeholder="Cari nama atau NIM..." className="w-full pl-12 pr-6 py-4 glass-input rounded-full text-white focus:outline-none transition-all border border-slate-700 focus:border-blue-500 bg-slate-900/80 shadow-2xl focus:shadow-blue-500/20" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
               </div>
-
-              {/* Filters - Centered */}
               <div className="flex flex-wrap justify-center gap-3">
                 {roles.map(role => (
-                  <button
-                    key={role}
-                    onClick={() => setFilter(role)}
-                    className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${
-                      filter === role 
-                      ? 'bg-blue-600 text-white border-blue-500 shadow-lg shadow-blue-600/30 scale-105' 
-                      : 'bg-slate-900/50 text-slate-400 border-slate-700 hover:border-blue-500/50 hover:text-white hover:bg-slate-800'
-                    }`}
-                  >
-                    {role}
-                  </button>
+                  <button key={role} onClick={() => setFilter(role)} className={`px-6 py-2.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 border ${filter === role ? 'bg-blue-600 text-white border-blue-500 shadow-lg scale-105' : 'bg-slate-900/50 text-slate-400 border-slate-700 hover:border-blue-500/50 hover:text-white hover:bg-slate-800'}`}>{role}</button>
                 ))}
               </div>
-
             </div>
 
-            {/* Changed Grid to 3 Cols */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+            {/* RESPONSIVE GRID: 2 cols mobile, 3 tablet, 4 desktop */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
               {filteredStudents.length > 0 ? (
                 filteredStudents.map((student, idx) => (
                   <ScrollReveal key={student.id} delay={idx * 50}>
@@ -1299,16 +1217,9 @@ const App = () => {
                   </ScrollReveal>
                 ))
               ) : (
-                <div className="col-span-full text-center py-12">
-                  <div className="inline-block p-6 rounded-2xl bg-slate-900/50 border border-slate-800">
-                    <p className="text-slate-400 text-lg">Tidak ditemukan mahasiswa dengan kata kunci "{searchQuery}"</p>
-                    <button 
-                      onClick={() => {setSearchQuery(''); setFilter('All')}} 
-                      className="mt-4 px-6 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm font-medium transition-all"
-                    >
-                      Reset Filter & Pencarian
-                    </button>
-                  </div>
+                <div className="col-span-full text-center py-12 text-slate-500">
+                   <p>Tidak ditemukan.</p>
+                   <button onClick={() => {setSearchQuery(''); setFilter('All')}} className="mt-4 text-blue-400 hover:underline">Reset</button>
                 </div>
               )}
             </div>
@@ -1318,13 +1229,10 @@ const App = () => {
         {/* --- PROJECTS --- */}
         <section id="projects" className="py-32 bg-slate-900/30 border-t border-white/5">
           <div className="container mx-auto px-6">
-            <div className="text-center mb-20">
-               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Our <span className="text-blue-500">Projects</span></h2>
-               <p className="text-slate-400 max-w-2xl mx-auto">
-                 Kami tidak hanya belajar teori, kami membangun solusi nyata.
-               </p>
+             <div className="text-center mb-20">
+               <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Our <span className="text-blue-500">Projects</span></h2>
+               <p className="text-slate-400 max-w-2xl mx-auto">Kami tidak hanya belajar teori, kami membangun solusi nyata.</p>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {projectsData.map((project, idx) => (
                 <ScrollReveal key={project.id} delay={idx * 100}>
@@ -1335,46 +1243,30 @@ const App = () => {
           </div>
         </section>
 
-         {/* --- MEMORIES --- */}
+         {/* --- MEMORIES (Masonry + Load More) --- */}
          <section id="memories" className="py-32 relative overflow-hidden">
           <div className="container mx-auto px-6 relative z-10">
             <div className="flex items-center justify-between mb-16">
                <h2 className="text-3xl md:text-4xl font-bold text-white">Class <span className="text-blue-500">Memories</span></h2>
-               <div className="p-3 bg-slate-800 rounded-full border border-slate-700 text-blue-500">
-                 <Camera size={24} />
-               </div>
+               <div className="p-3 bg-slate-800 rounded-full border border-slate-700 text-blue-500"><Camera size={24} /></div>
             </div>
 
-            {/* UPDATED MEMORIES GRID (Masonry + Load More) */}
+            {/* MASONRY RESPONSIVE: 2 Columns on Mobile, 3 on Desktop */}
             <div className="columns-2 md:columns-3 gap-4 space-y-4">
               {memoriesData.slice(0, visibleMemories).map((memory, idx) => (
-                <ScrollReveal key={idx} delay={idx % 3 * 100}>
-                  <div className="break-inside-avoid mb-4 group relative rounded-2xl overflow-hidden cursor-pointer border border-white/5 hover:border-blue-500/50 transition-colors shadow-lg">
-                    <img 
-                      src={memory.src} 
-                      alt={memory.caption} 
-                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110" 
-                      onError={handleImageError}
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                      <div>
-                        <span className="block text-blue-400 text-xs font-bold uppercase tracking-wider mb-1">Moment</span>
-                        <span className="text-white font-bold text-sm md:text-lg">{memory.caption}</span>
-                      </div>
-                    </div>
+                <div key={idx} className="break-inside-avoid mb-4 group relative rounded-xl overflow-hidden cursor-pointer border border-white/5 hover:border-blue-500/50 transition-colors shadow-lg">
+                  <img src={memory.src} alt={memory.caption} className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110" onError={handleProjectImageError} loading="lazy" />
+                  {/* Overlay Hidden on Mobile to save space, Visible on Hover/Desktop */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                    <span className="text-white font-bold text-sm md:text-lg">{memory.caption}</span>
                   </div>
-                </ScrollReveal>
+                </div>
               ))}
             </div>
             
-            {/* Load More Button */}
             {visibleMemories < memoriesData.length && (
               <div className="text-center mt-12">
-                <button 
-                  onClick={loadMoreMemories} 
-                  className="px-8 py-3 bg-slate-800 hover:bg-blue-600 text-white rounded-full transition-all border border-slate-700 hover:border-blue-500 shadow-lg"
-                >
+                <button onClick={loadMoreMemories} className="px-8 py-3 bg-slate-800 hover:bg-blue-600 text-white rounded-full transition-all border border-slate-700 hover:border-blue-500">
                   Load More Memories
                 </button>
               </div>
@@ -1385,37 +1277,16 @@ const App = () => {
         {/* --- FOOTER --- */}
         <footer className="py-16 border-t border-blue-900/30 bg-slate-950 relative overflow-hidden">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-50"></div>
-          
           <div className="container mx-auto px-6 text-center">
-            <div className="mb-8 flex justify-center items-center gap-3">
-               <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-600/30">
-                 <Cpu size={24} />
-               </div>
-               <h2 className="text-2xl font-bold text-white">D3SI-49-04</h2>
+             <h2 className="text-2xl font-bold text-white mb-8">D3SI-49-04</h2>
+             <div className="flex justify-center gap-6 mb-12">
+              <a href="#" className="p-3 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:bg-blue-600 hover:text-white transition-all"><Instagram size={20} /></a>
+              <a href="#" className="p-3 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:bg-blue-600 hover:text-white transition-all"><Linkedin size={20} /></a>
+              <a href="#" className="p-3 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:bg-blue-600 hover:text-white transition-all"><Mail size={20} /></a>
             </div>
-            
-            <p className="text-slate-400 mb-8 max-w-md mx-auto">
-              Sistem Informasi Telkom University Angkatan 2025. 
-              Mewujudkan mimpi digital bersama.
-            </p>
-
-            <div className="flex justify-center gap-6 mb-12">
-              <a href="#" className="p-3 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:bg-blue-600 hover:text-white hover:border-blue-500 transition-all hover:-translate-y-1">
-                <Instagram size={20} />
-              </a>
-              <a href="#" className="p-3 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:bg-blue-600 hover:text-white hover:border-blue-500 transition-all hover:-translate-y-1">
-                <Linkedin size={20} />
-              </a>
-              <a href="#" className="p-3 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:bg-blue-600 hover:text-white hover:border-blue-500 transition-all hover:-translate-y-1">
-                <Mail size={20} />
-              </a>
-            </div>
-            <p className="text-slate-600 text-sm font-mono">
-              © 2025 Created with React & Tailwind CSS.
-            </p>
+            <p className="text-slate-600 text-sm font-mono">© 2025 Created with React & Tailwind CSS.</p>
           </div>
         </footer>
-
       </div>
     </>
   );

@@ -586,7 +586,7 @@ const studentsData = [
 const projectsData = [
   {
     id: 1,
-    title: "Sistem Manajemen Lab",
+    title: "Studymate",
     status: "Ongoing",
     desc: "Platform terintegrasi untuk peminjaman alat laboratorium dan penjadwalan asisten praktikum.",
     tech: ["Laravel", "React", "MySQL"],
@@ -594,7 +594,7 @@ const projectsData = [
   },
   {
     id: 2,
-    title: "Aplikasi Kantin Pintar",
+    title: "Ascenda",
     status: "Completed",
     desc: "Aplikasi pemesanan makanan di kantin TULT dengan fitur pembayaran QRIS otomatis.",
     tech: ["Flutter", "Firebase", "Go"],
@@ -602,7 +602,7 @@ const projectsData = [
   },
   {
     id: 3,
-    title: "IoT Smart Parking",
+    title: "Gerai.Fox",
     status: "Ongoing",
     desc: "Sistem deteksi parkir kosong di Gedung TULT menggunakan sensor ultrasonik dan dashboard real-time.",
     tech: ["Arduino", "Python", "MQTT"],
@@ -610,7 +610,7 @@ const projectsData = [
   },
    {
     id: 4,
-    title: "Portal Organisasi Mahasiswa",
+    title: "KostInt",
     status: "Completed",
     desc: "Web portal untuk pendaftaran dan manajemen kegiatan organisasi kemahasiswaan.",
     tech: ["Next.js", "Supabase", "Tailwind"],
@@ -1297,7 +1297,7 @@ const App = () => {
               <a href="#" className="p-3 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:bg-blue-600 hover:text-white transition-all"><Linkedin size={20} /></a>
               <a href="#" className="p-3 rounded-full bg-slate-900 border border-slate-800 text-slate-400 hover:bg-blue-600 hover:text-white transition-all"><Mail size={20} /></a>
             </div>
-            <p className="text-slate-600 text-sm font-mono">© 2025 Created with React & Tailwind CSS.</p>
+            <p className="text-slate-600 text-sm font-mono">© 2025 Created with Love & Forever Family, Forever Coding.</p>
           </div>
         </footer>
       </div>

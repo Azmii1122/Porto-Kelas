@@ -2,25 +2,21 @@ import { useState, useEffect, useRef } from 'react';
 import { 
   Users, 
   Code, 
-  BookOpen, 
   Camera, 
   ChevronDown, 
   ChevronUp, 
+  ChevronLeft, // Added fix
+  ChevronRight, // Added fix
   Github, 
   Instagram, 
   Linkedin, 
-  ExternalLink,
-  Mail,
-  X,
-  Cpu,
-  Globe,
-  Award,
-  Zap,
-  Calendar,
-  ArrowRight,
-  ChevronLeft,
-  ChevronRight,
-  Monitor,
+  Mail, 
+  X, 
+  Cpu, 
+  Award, 
+  Zap, 
+  ArrowRight, 
+  Monitor, 
   Search 
 } from 'lucide-react';
 
@@ -34,7 +30,7 @@ const customStyles = `
     --dark: #020617;
   }
 
-  /* GLOBAL SMOOTH SCROLL - WAJIB ADA */
+  /* GLOBAL SMOOTH SCROLL */
   html {
     scroll-behavior: smooth;
   }
@@ -613,18 +609,18 @@ const projectsData = [
 ];
 
 const memoriesData = [
-  { type: 'image', src: "/Image/memory/bareng_kak_feb.JPG", caption: "Campus Tour With Kak Feb" },
-  { type: 'image', src: "/Image/memory/selesai_studentfair.JPG", caption: "Campus Tour" },
-  { type: 'image', src: "/Image/memory/foto_grup_cewek.JPG", caption: "Campus Tour With Kak Feb" },
-  { type: 'image', src: "/Image/memory/studio1.JPG", caption: "Class Photo Session" },
-  { type: 'image', src: "/Image/memory/studio3.JPG", caption: "Class Photo Session" },
-  { type: 'image', src: "/Image/memory/studio2.JPG", caption: "Class Photo Session" },
-  { type: 'image', src: "/Image/memory/last_pkkmb1.JPG", caption: "Last Day PKKMB" },
-  { type: 'image', src: "/Image/memory/last_pkkmb2.JPG", caption: "Last Day PKKMB" },
-  { type: 'image', src: "/Image/memory/last_pkkmb3.JPG", caption: "Last Day PKKMB" },
-  { type: 'image', src: "/Image/memory/lo2.JPG", caption: "Best Liaison Officer" },
-  { type: 'image', src: "/Image/memory/lo1.JPG", caption: "Best Liaison Officer" },
-  { type: 'image', src: "/Image/memory/lo3.JPG", caption: "Best Liaison Officer" },
+  { type: 'image', src: "/Image/memory/barengkakfeb.jpg", caption: "Campus Tour With Kak Feb" },
+  { type: 'image', src: "/Image/memory/selesaistudentfair.jpg", caption: "Campus Tour" },
+  { type: 'image', src: "/Image/memory/fotogrupcewek.jpg", caption: "Campus Tour With Kak Feb" },
+  { type: 'image', src: "/Image/memory/studio1.jpg", caption: "Class Photo Session" },
+  { type: 'image', src: "/Image/memory/studio3.jpg", caption: "Class Photo Session" },
+  { type: 'image', src: "/Image/memory/studio2.jpg", caption: "Class Photo Session" },
+  { type: 'image', src: "/Image/memory/lastpkkmb1.jpg", caption: "Last Day PKKMB" },
+  { type: 'image', src: "/Image/memory/lastpkkmb2.jpg", caption: "Last Day PKKMB" },
+  { type: 'image', src: "/Image/memory/lastpkkmb3.jpg", caption: "Last Day PKKMB" },
+  { type: 'image', src: "/Image/memory/lo2.jpg", caption: "Best Liaison Officer" },
+  { type: 'image', src: "/Image/memory/lo1.jpg", caption: "Best Liaison Officer" },
+  { type: 'image', src: "/Image/memory/lo3.jpg", caption: "Best Liaison Officer" },
   { type: 'image', src: "/Image/memory/praktikum1.jpeg", caption: "After Coding Session" },
   { type: 'image', src: "/Image/memory/praktikum2.jpeg", caption: "After Coding Session" },
   { type: 'image', src: "/Image/memory/random5.jpg", caption: "Mirror Selfie" },
@@ -771,7 +767,6 @@ const Navbar = () => {
   return (
     <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-slate-950/80 backdrop-blur-md border-b border-blue-500/10 py-4 shadow-lg shadow-blue-900/5' : 'bg-transparent py-6'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
-        {/* REBRANDING D3SI */}
         <div className="text-xl font-bold tracking-tight flex items-center gap-3 group cursor-pointer" onClick={() => scrollTo('home')}>
           <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white group-hover:rotate-12 transition-transform shadow-[0_0_15px_rgba(37,99,235,0.5)]">
             <Cpu size={22} strokeWidth={2.5} />
@@ -779,7 +774,6 @@ const Navbar = () => {
           <span className="text-white font-space text-lg">D3SI<span className="text-blue-500">-49-04</span></span>
         </div>
 
-        {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map(link => (
             <button key={link.name} onClick={() => scrollTo(link.id)} className="text-sm font-medium text-slate-400 hover:text-blue-400 transition-colors relative group">
@@ -792,12 +786,10 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Toggle */}
         <button className="md:hidden text-white hover:text-blue-500 transition-colors" onClick={() => setMobileMenu(!mobileMenu)}>
           {mobileMenu ? <X /> : <Code />}
         </button>
 
-        {/* Mobile Menu */}
         {mobileMenu && (
           <div className="absolute top-full left-0 w-full bg-slate-900 border-b border-blue-900/30 p-6 flex flex-col gap-4 animate-fadeIn shadow-2xl">
             {navLinks.map(link => (
@@ -849,7 +841,6 @@ const LoadingScreen = ({ onComplete }) => {
   );
 };
 
-// --- STUDENT SPOTLIGHT (CAROUSEL) ---
 const StudentSlider = ({ students, onSelect }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -857,14 +848,12 @@ const StudentSlider = ({ students, onSelect }) => {
   const next = () => setCurrentIndex((prev) => (prev + 1) % students.length);
   const prev = () => setCurrentIndex((prev) => (prev - 1 + students.length) % students.length);
 
-  // Auto slide with pause on hover
   useEffect(() => {
     if (isHovered) return;
     const timer = setInterval(next, 3000); 
     return () => clearInterval(timer);
   }, [isHovered, students.length]);
 
-  // Determine prev, current, next indices
   const prevIndex = (currentIndex - 1 + students.length) % students.length;
   const nextIndex = (currentIndex + 1) % students.length;
 
@@ -888,7 +877,6 @@ const StudentSlider = ({ students, onSelect }) => {
       </div>
 
       <div className="relative h-[400px] flex items-center justify-center overflow-hidden">
-        {/* Navigation Buttons */}
         <button onClick={prev} className="absolute left-4 md:left-10 z-20 p-3 bg-slate-900/80 hover:bg-blue-600 border border-slate-700 text-white rounded-full transition-all backdrop-blur-sm">
           <ChevronLeft size={24} />
         </button>
@@ -896,7 +884,6 @@ const StudentSlider = ({ students, onSelect }) => {
           <ChevronRight size={24} />
         </button>
 
-        {/* Carousel Content */}
         <div className="flex items-center justify-center w-full h-full relative">
           {cards.map((item, index) => {
             const isCurrent = item.type === 'current';
@@ -918,6 +905,7 @@ const StudentSlider = ({ students, onSelect }) => {
                     alt={item.data.name} 
                     className={`rounded-full object-cover border-4 border-slate-900 bg-slate-800 transition-all ${isCurrent ? 'w-32 h-32 md:w-40 md:h-40 border-blue-500' : 'w-24 h-24 border-slate-700'}`}
                     onError={handleImageError}
+                    loading="lazy"
                   />
                 </div>
                 
@@ -951,6 +939,7 @@ const StudentCard = ({ student, onClick }) => (
           alt={student.name} 
           className="w-16 h-16 rounded-2xl bg-slate-800 object-cover border border-slate-700 group-hover:border-blue-500 transition-colors"
           onError={handleImageError}
+          loading="lazy"
         />
       </div>
       <div className="px-2 py-1 bg-slate-800 rounded-md border border-slate-700">
@@ -978,6 +967,7 @@ const ProjectCard = ({ project }) => (
         alt={project.title} 
         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
         onError={handleProjectImageError}
+        loading="lazy"
       />
       <div className="absolute top-4 right-4 px-3 py-1 bg-slate-950/80 backdrop-blur text-xs font-bold rounded-full border border-white/10 text-white z-20 shadow-lg">
         {project.status}
@@ -1014,6 +1004,7 @@ const StudentModal = ({ student, onClose }) => {
             alt={student.name} 
             className="w-48 h-48 rounded-full border-4 border-blue-500 shadow-xl shadow-blue-500/20 mb-6 relative z-10 object-cover bg-slate-800"
             onError={handleImageError}
+            loading="lazy"
           />
           <h2 className="text-2xl font-bold text-white relative z-10">{student.name}</h2>
           <p className="text-blue-400 font-mono text-sm relative z-10 mb-8">{student.nim}</p>
@@ -1097,6 +1088,7 @@ const App = () => {
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [filter, setFilter] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [visibleMemories, setVisibleMemories] = useState(6); // Added state for memories
 
   const filteredStudents = studentsData.filter(s => {
     const matchesRole = filter === "All" || s.role === filter;
@@ -1119,6 +1111,10 @@ const App = () => {
         behavior: 'smooth'
       });
     }
+  };
+
+  const loadMoreMemories = () => {
+    setVisibleMemories(prev => prev + 6);
   };
 
   return (
@@ -1148,7 +1144,7 @@ const App = () => {
               <span className="text-sm font-semibold text-blue-300 tracking-wider">TELKOM UNIVERSITY 2025</span>
             </div>
             
-            <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-bold text-white mb-8 tracking-tight leading-none animate-fadeInUp">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-8 tracking-tight leading-tight animate-fadeInUp">
               We are <br className="md:hidden" /> 
               <TypingText textArray={["Developers", "Designers", "Innovators", "D3SI-49-04"]} />
             </h1>
@@ -1295,7 +1291,7 @@ const App = () => {
             </div>
 
             {/* Changed Grid to 3 Cols */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
               {filteredStudents.length > 0 ? (
                 filteredStudents.map((student, idx) => (
                   <ScrollReveal key={student.id} delay={idx * 50}>
@@ -1349,27 +1345,40 @@ const App = () => {
                </div>
             </div>
 
-            {/* UPDATED MEMORIES GRID (LANDSCAPE 3 COLS) */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {memoriesData.map((memory, idx) => (
+            {/* UPDATED MEMORIES GRID (Masonry + Load More) */}
+            <div className="columns-2 md:columns-3 gap-4 space-y-4">
+              {memoriesData.slice(0, visibleMemories).map((memory, idx) => (
                 <ScrollReveal key={idx} delay={idx % 3 * 100}>
-                  <div className="group relative rounded-2xl overflow-hidden cursor-pointer border border-white/5 hover:border-blue-500/50 transition-colors aspect-video shadow-lg">
+                  <div className="break-inside-avoid mb-4 group relative rounded-2xl overflow-hidden cursor-pointer border border-white/5 hover:border-blue-500/50 transition-colors shadow-lg">
                     <img 
                       src={memory.src} 
                       alt={memory.caption} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110" 
                       onError={handleImageError}
+                      loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                       <div>
                         <span className="block text-blue-400 text-xs font-bold uppercase tracking-wider mb-1">Moment</span>
-                        <span className="text-white font-bold text-lg">{memory.caption}</span>
+                        <span className="text-white font-bold text-sm md:text-lg">{memory.caption}</span>
                       </div>
                     </div>
                   </div>
                 </ScrollReveal>
               ))}
             </div>
+            
+            {/* Load More Button */}
+            {visibleMemories < memoriesData.length && (
+              <div className="text-center mt-12">
+                <button 
+                  onClick={loadMoreMemories} 
+                  className="px-8 py-3 bg-slate-800 hover:bg-blue-600 text-white rounded-full transition-all border border-slate-700 hover:border-blue-500 shadow-lg"
+                >
+                  Load More Memories
+                </button>
+              </div>
+            )}
           </div>
         </section>
 

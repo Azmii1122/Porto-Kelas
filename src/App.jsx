@@ -149,7 +149,7 @@ const lecturerData = {
   name: "M. Yusuf Ramadhan, S.AB., M.AB.",
   role: "Academic Advisor",
   quote: "Membangun pondasi logika yang kuat untuk masa depan digital.",
-  image: "/Image/pakyusuf.png", // Path diperbaiki: /Image/
+  image: "/Image/pakyusuf.png", 
   email: "muhamadyusuframadhan@telkomuniversity.ac.id"
 };
 
@@ -190,7 +190,7 @@ const studentsData = [
     name: "Dinda Revalina Rahman",
     nim: "607012500002",
     role: "Fullstack Dev",
-    image: "/Image/dinda.jpg", // Sesuaikan nama file asli di folder Image
+    image: "/Image/dinda.jpg", 
     bio: "Tulis deskripsi singkat atau kata-kata mutiara mahasiswa ini di sini.",
     projects: "Olahin",
     skills: ["HTML", "CSS", "Figma"],
@@ -235,7 +235,7 @@ const studentsData = [
     name: "Nevi Suryani",
     nim: "607012500008",
     role: "UI/UX Designer",
-    image: "/Image/nevi.jpg", // Pastikan file nevi.jpg ada
+    image: "/Image/nevi.jpg",
     bio: "Suka mendesain tampilan web yang user friendly.",
     projects: "Lombify",
     skills: ["Figma", "Adobe XD"],
@@ -487,94 +487,19 @@ const studentsData = [
   },
   {
     id: 23,
-    name: "Daffa Satrya Bara Pratama",
-    nim: "607012500048",
-    role: "Cyber Security",
-    image: "/Image/daffa.jpg",
-    bio: "Tulis deskripsi singkat atau kata-kata mutiara mahasiswa ini di sini.",
-    projects: "Ascenda",
-    skills: ["HTML", "CSS", "Figma"],
-    socials: {
-      instagram: "https://www.instagram.com/d.satryabara.p/",
-      linkedin: "https://www.linkedin.com/in/daffa-satrya-bara-pratama-3262b333b/",
-      github: "#"
-    }
-  },
-  {
-    id: 24,
-    name: "Dava Aryadhinata",
-    nim: "607012500035",
-    role: "UI/UX Designer",
-    image: "/Image/dava.jpg",
+    name: "Muhammad Reeyhan",
+    nim: "607012500088",
+    role: "Mobile Dev",
+    image: "/Image/reeyhan.jpg",
     bio: "Suka mendesain tampilan web yang user friendly.",
-    projects: "LUMIERE",
-    skills: ["Figma", "Adobe XD"],
-    socials: {
-      instagram: "https://www.instagram.com/dappudappuu/",
-      linkedin: "https://www.linkedin.com/in/dava-aryadhinata-1bb15838a/",
-      github: "#"
-    }
-  },
-  {
-    id: 25,
-    name: "Deandra Ramadhani",
-    nim: "607012500060",
-    role: "Project Manager",
-    image: "/Image/deandra.jpg",
-    bio: "Tulis deskripsi singkat atau kata-kata mutiara mahasiswa ini di sini.",
     projects: "KostInt",
-    skills: ["HTML", "CSS", "Figma"],
-    socials: {
-      instagram: "https://www.instagram.com/ddndra_/",
-      linkedin: "https://www.linkedin.com/in/deandra-ramadhani-7a7838388/",
-      github: "#"
-    }
-  },
-  {
-    id: 26,
-    name: "Delia Sahla Nufadilah",
-    nim: "607012500096",
-    role: "UI/UX Designer",
-    image: "/Image/delia.jpg",
-    bio: "Suka mendesain tampilan web yang user friendly.",
-    projects: "BeautyVerse",
     skills: ["Figma", "Adobe XD"],
     socials: {
-      instagram: "https://www.instagram.com/deliasahlaaa/",
-      linkedin: "https://www.linkedin.com/in/delia-sahla-6b5005389/",
+      instagram: "https://www.instagram.com/muhammad_reeyhan/",
+      linkedin: "https://www.linkedin.com/in/muhammad-reeyhan-153a37388/",
       github: "#"
     }
-  },
-  {
-    id: 27,
-    name: "Delia Sahla Nufadilah",
-    nim: "607012500096",
-    role: "UI/UX Designer",
-    image: "/Image/delia.jpg",
-    bio: "Suka mendesain tampilan web yang user friendly.",
-    projects: "BeautyVerse",
-    skills: ["Figma", "Adobe XD"],
-    socials: {
-      instagram: "https://www.instagram.com/deliasahlaaa/",
-      linkedin: "https://www.linkedin.com/in/delia-sahla-6b5005389/",
-      github: "#"
-    }
-  },
-  {
-    id: 28,
-    name: "Delia Sahla Nufadilah",
-    nim: "607012500096",
-    role: "UI/UX Designer",
-    image: "/Image/delia.jpg",
-    bio: "Suka mendesain tampilan web yang user friendly.",
-    projects: "BeautyVerse",
-    skills: ["Figma", "Adobe XD"],
-    socials: {
-      instagram: "https://www.instagram.com/deliasahlaaa/",
-      linkedin: "https://www.linkedin.com/in/delia-sahla-6b5005389/",
-      github: "#"
-    }
-  },
+  }
 ];
 
 const projectsData = [
@@ -771,6 +696,7 @@ const Navbar = () => {
   return (
     <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-slate-950/80 backdrop-blur-md border-b border-blue-500/10 py-4 shadow-lg shadow-blue-900/5' : 'bg-transparent py-6'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
+        {/* REBRANDING D3SI */}
         <div className="text-xl font-bold tracking-tight flex items-center gap-3 group cursor-pointer" onClick={() => scrollTo('home')}>
           <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white group-hover:rotate-12 transition-transform shadow-[0_0_15px_rgba(37,99,235,0.5)]">
             <Cpu size={22} strokeWidth={2.5} />
@@ -778,6 +704,7 @@ const Navbar = () => {
           <span className="text-white font-space text-lg">D3SI<span className="text-blue-500">-49-04</span></span>
         </div>
 
+        {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map(link => (
             <button key={link.name} onClick={() => scrollTo(link.id)} className="text-sm font-medium text-slate-400 hover:text-blue-400 transition-colors relative group">
@@ -790,10 +717,12 @@ const Navbar = () => {
           </button>
         </div>
 
+        {/* Mobile Toggle */}
         <button className="md:hidden text-white hover:text-blue-500 transition-colors" onClick={() => setMobileMenu(!mobileMenu)}>
           {mobileMenu ? <X /> : <Code />}
         </button>
 
+        {/* Mobile Menu */}
         {mobileMenu && (
           <div className="absolute top-full left-0 w-full bg-slate-900 border-b border-blue-900/30 p-6 flex flex-col gap-4 animate-fadeIn shadow-2xl">
             {navLinks.map(link => (
@@ -845,6 +774,7 @@ const LoadingScreen = ({ onComplete }) => {
   );
 };
 
+// --- STUDENT SPOTLIGHT (CAROUSEL) ---
 const StudentSlider = ({ students, onSelect }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -852,12 +782,14 @@ const StudentSlider = ({ students, onSelect }) => {
   const next = () => setCurrentIndex((prev) => (prev + 1) % students.length);
   const prev = () => setCurrentIndex((prev) => (prev - 1 + students.length) % students.length);
 
+  // Auto slide with pause on hover
   useEffect(() => {
     if (isHovered) return;
     const timer = setInterval(next, 3000); 
     return () => clearInterval(timer);
   }, [isHovered, students.length]);
 
+  // Determine prev, current, next indices
   const prevIndex = (currentIndex - 1 + students.length) % students.length;
   const nextIndex = (currentIndex + 1) % students.length;
 
@@ -881,6 +813,7 @@ const StudentSlider = ({ students, onSelect }) => {
       </div>
 
       <div className="relative h-[400px] flex items-center justify-center overflow-hidden">
+        {/* Navigation Buttons */}
         <button onClick={prev} className="absolute left-4 md:left-10 z-20 p-3 bg-slate-900/80 hover:bg-blue-600 border border-slate-700 text-white rounded-full transition-all backdrop-blur-sm">
           <ChevronLeft size={24} />
         </button>
@@ -888,6 +821,7 @@ const StudentSlider = ({ students, onSelect }) => {
           <ChevronRight size={24} />
         </button>
 
+        {/* Carousel Content */}
         <div className="flex items-center justify-center w-full h-full relative">
           {cards.map((item, index) => {
             const isCurrent = item.type === 'current';
@@ -1139,7 +1073,7 @@ const App = () => {
               <span className="text-sm font-semibold text-blue-300 tracking-wider">TELKOM UNIVERSITY 2025</span>
             </div>
             
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-8 tracking-tight leading-tight animate-fadeInUp">
+            <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-9xl font-bold text-white mb-8 tracking-tight leading-none animate-fadeInUp">
               We are <br className="md:hidden" /> 
               <TypingText textArray={["Developers", "Designers", "Innovators", "D3SI-49-04"]} />
             </h1>
@@ -1246,46 +1180,41 @@ const App = () => {
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
           <div className="container mx-auto px-6">
             
-            {/* NEW HEADER LAYOUT (SPLIT LEFT-RIGHT) */}
-            <div className="flex flex-col lg:flex-row justify-between items-end mb-12 gap-6">
+            {/* NEW HEADER LAYOUT (CENTERED) */}
+            <div className="flex flex-col items-center justify-center text-center mb-16 gap-8">
               
-              {/* Left Side: Title */}
-              <div className="text-center lg:text-left w-full lg:w-auto">
-                <h2 className="text-4xl font-bold text-white mb-2">All <span className="text-blue-500">Students</span></h2>
-                <p className="text-slate-400 text-lg">Daftar lengkap anggota kelas D3SI-49-04.</p>
+              <div>
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">All <span className="text-blue-500">Students</span></h2>
+                <p className="text-slate-400 text-lg max-w-2xl mx-auto">Daftar lengkap anggota kelas D3SI-49-04.</p>
               </div>
 
-              {/* Right Side: Controls */}
-              <div className="flex flex-col md:flex-row gap-4 w-full lg:w-auto items-center">
-                {/* Search Bar */}
-                <div className="relative w-full md:w-64 group">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-blue-500 transition-colors" size={18} />
-                  <input 
-                    type="text" 
-                    placeholder="Search name or NIM..." 
-                    className="w-full pl-10 pr-4 py-3 glass-input rounded-xl text-white focus:outline-none transition-all border border-slate-700 focus:border-blue-500 bg-slate-900/50"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                  />
-                </div>
+              {/* Search Bar - Centered */}
+              <div className="relative w-full max-w-lg">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+                <input 
+                  type="text" 
+                  placeholder="Cari nama atau NIM..." 
+                  className="w-full pl-12 pr-6 py-4 glass-input rounded-full text-white focus:outline-none transition-all border border-slate-700 focus:border-blue-500 bg-slate-900/80 shadow-2xl focus:shadow-blue-500/20"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </div>
 
-                {/* Filter Buttons (Scrollable on Mobile if needed) */}
-                <div className="flex flex-wrap justify-center lg:justify-end gap-2">
-                  {roles.slice(0, 3).map(role => (
-                    <button
-                      key={role}
-                      onClick={() => setFilter(role)}
-                      className={`px-4 py-2 rounded-lg text-xs font-medium transition-all duration-300 border ${
-                        filter === role 
-                        ? 'bg-blue-600 text-white border-blue-500 shadow-lg' 
-                        : 'bg-slate-900/50 text-slate-400 border-slate-800 hover:border-blue-500/50 hover:text-white'
-                      }`}
-                    >
-                      {role}
-                    </button>
-                  ))}
-                  {/* Dropdown for extra roles could go here, but kept simple for now */}
-                </div>
+              {/* Filters - Centered */}
+              <div className="flex flex-wrap justify-center gap-3">
+                {roles.map(role => (
+                  <button
+                    key={role}
+                    onClick={() => setFilter(role)}
+                    className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${
+                      filter === role 
+                      ? 'bg-blue-600 text-white border-blue-500 shadow-lg shadow-blue-600/30 scale-105' 
+                      : 'bg-slate-900/50 text-slate-400 border-slate-700 hover:border-blue-500/50 hover:text-white hover:bg-slate-800'
+                    }`}
+                  >
+                    {role}
+                  </button>
+                ))}
               </div>
 
             </div>
@@ -1301,8 +1230,13 @@ const App = () => {
               ) : (
                 <div className="col-span-full text-center py-12">
                   <div className="inline-block p-6 rounded-2xl bg-slate-900/50 border border-slate-800">
-                    <p className="text-slate-400 text-lg">No students found matching "{searchQuery}"</p>
-                    <button onClick={() => {setSearchQuery(''); setFilter('All')}} className="mt-4 text-blue-400 hover:text-blue-300 text-sm font-medium">Clear Search</button>
+                    <p className="text-slate-400 text-lg">Tidak ditemukan mahasiswa dengan kata kunci "{searchQuery}"</p>
+                    <button 
+                      onClick={() => {setSearchQuery(''); setFilter('All')}} 
+                      className="mt-4 px-6 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm font-medium transition-all"
+                    >
+                      Reset Filter & Pencarian
+                    </button>
                   </div>
                 </div>
               )}

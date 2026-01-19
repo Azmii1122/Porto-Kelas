@@ -41,6 +41,12 @@ const customStyles = `
     color: #e2e8f0;
     overflow-x: hidden;
   }
+  
+  /* Text Selection Color - New Addition */
+  ::selection {
+    background-color: var(--primary);
+    color: #ffffff;
+  }
 
   /* Custom Scrollbar */
   ::-webkit-scrollbar {
@@ -767,6 +773,7 @@ const Navbar = () => {
   return (
     <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-slate-950/80 backdrop-blur-md border-b border-blue-500/10 py-4 shadow-lg shadow-blue-900/5' : 'bg-transparent py-6'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
+        {/* REBRANDING D3SI */}
         <div className="text-xl font-bold tracking-tight flex items-center gap-3 group cursor-pointer" onClick={() => scrollTo('home')}>
           <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white group-hover:rotate-12 transition-transform shadow-[0_0_15px_rgba(37,99,235,0.5)]">
             <Cpu size={22} strokeWidth={2.5} />
@@ -774,6 +781,7 @@ const Navbar = () => {
           <span className="text-white font-space text-lg">D3SI<span className="text-blue-500">-49-04</span></span>
         </div>
 
+        {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map(link => (
             <button key={link.name} onClick={() => scrollTo(link.id)} className="text-sm font-medium text-slate-400 hover:text-blue-400 transition-colors relative group">
@@ -786,10 +794,12 @@ const Navbar = () => {
           </button>
         </div>
 
+        {/* Mobile Toggle */}
         <button className="md:hidden text-white hover:text-blue-500 transition-colors" onClick={() => setMobileMenu(!mobileMenu)}>
           {mobileMenu ? <X /> : <Code />}
         </button>
 
+        {/* Mobile Menu */}
         {mobileMenu && (
           <div className="absolute top-full left-0 w-full bg-slate-900 border-b border-blue-900/30 p-6 flex flex-col gap-4 animate-fadeIn shadow-2xl">
             {navLinks.map(link => (
@@ -841,6 +851,7 @@ const LoadingScreen = ({ onComplete }) => {
   );
 };
 
+// --- STUDENT SPOTLIGHT (CAROUSEL) ---
 const StudentSlider = ({ students, onSelect }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -848,12 +859,14 @@ const StudentSlider = ({ students, onSelect }) => {
   const next = () => setCurrentIndex((prev) => (prev + 1) % students.length);
   const prev = () => setCurrentIndex((prev) => (prev - 1 + students.length) % students.length);
 
+  // Auto slide with pause on hover
   useEffect(() => {
     if (isHovered) return;
     const timer = setInterval(next, 3000); 
     return () => clearInterval(timer);
   }, [isHovered, students.length]);
 
+  // Determine prev, current, next indices
   const prevIndex = (currentIndex - 1 + students.length) % students.length;
   const nextIndex = (currentIndex + 1) % students.length;
 
@@ -877,6 +890,7 @@ const StudentSlider = ({ students, onSelect }) => {
       </div>
 
       <div className="relative h-[400px] flex items-center justify-center overflow-hidden">
+        {/* Navigation Buttons */}
         <button onClick={prev} className="absolute left-4 md:left-10 z-20 p-3 bg-slate-900/80 hover:bg-blue-600 border border-slate-700 text-white rounded-full transition-all backdrop-blur-sm">
           <ChevronLeft size={24} />
         </button>
@@ -884,6 +898,7 @@ const StudentSlider = ({ students, onSelect }) => {
           <ChevronRight size={24} />
         </button>
 
+        {/* Carousel Content */}
         <div className="flex items-center justify-center w-full h-full relative">
           {cards.map((item, index) => {
             const isCurrent = item.type === 'current';

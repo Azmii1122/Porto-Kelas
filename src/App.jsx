@@ -1266,8 +1266,15 @@ const App = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {memoriesData.slice(0, visibleMemories).map((memory, idx) => (
                 <ScrollReveal key={idx} delay={idx % 3 * 100}>
-                  <div className="group relative rounded-xl overflow-hidden cursor-pointer border border-white/5 hover:border-blue-500/50 transition-colors shadow-lg aspect-[4/5]">
-                    <img src={memory.src} alt={memory.caption} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onError={handleProjectImageError} loading="lazy" />
+                  {/* Changed aspect-video to aspect-[4/3] which is standard landscape but not too wide */}
+                  <div className="group relative rounded-xl overflow-hidden cursor-pointer border border-white/5 hover:border-blue-500/50 transition-colors shadow-lg aspect-[4/3]">
+                    <img 
+                      src={memory.src} 
+                      alt={memory.caption} 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                      onError={handleProjectImageError} 
+                      loading="lazy" 
+                    />
                     {/* Overlay Hidden on Mobile to save space, Visible on Hover/Desktop */}
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                       <span className="text-white font-bold text-sm md:text-lg">{memory.caption}</span>

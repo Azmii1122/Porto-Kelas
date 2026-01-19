@@ -488,7 +488,7 @@ const studentsData = [
   {
     id: 23,
     name: "Muhammad Reeyhan",
-    nim: "607012500088",
+    nim: "607012500105",
     role: "Mobile Dev",
     image: "/Image/reeyhan.jpg",
     bio: "Suka mendesain tampilan web yang user friendly.",
@@ -497,6 +497,81 @@ const studentsData = [
     socials: {
       instagram: "https://www.instagram.com/muhammad_reeyhan/",
       linkedin: "https://www.linkedin.com/in/muhammad-reeyhan-153a37388/",
+      github: "#"
+    }
+  },
+  {
+    id: 24,
+    name: "Mutiara Cinta Pratiwi",
+    nim: "607012500040",
+    role: "UI/UX Designer",
+    image: "/Image/mutiara.jpg",
+    bio: "Suka mendesain tampilan web yang user friendly.",
+    projects: "Gerai.Fox",
+    skills: ["Figma", "Adobe XD"],
+    socials: {
+      instagram: "https://www.instagram.com/amoo0rrr/",
+      linkedin: "https://www.linkedin.com/in/mutiara-cinta-pratiwi-03a714388/",
+      github: "#"
+    }
+  },
+  {
+    id: 25,
+    name: "Naufal Azmi Algifari",
+    nim: "607012500063",
+    role: "Fullstack Dev",
+    image: "/Image/naufal.jpg",
+    bio: "Tulis deskripsi singkat atau kata-kata mutiara mahasiswa ini di sini.",
+    projects: "TuNotes",
+    skills: ["HTML", "CSS", "Figma"],
+    socials: {
+      instagram: "https://www.instagram.com/naz_all_/",
+      linkedin: "https://www.linkedin.com/in/naufal-azmi-alghifarri-55869838b/",
+      github: "#"
+    }
+  },
+  {
+    id: 26,
+    name: "Nurjihaan Hasna Haasyimiyyah",
+    nim: "607012500007",
+    role: "UI/UX Designer",
+    image: "/Image/nurjihaan.jpg",
+    bio: "Suka mendesain tampilan web yang user friendly.",
+    projects: "Gerai.Fox",
+    skills: ["Figma", "Adobe XD"],
+    socials: {
+      instagram: "https://www.instagram.com/_sugarxj/",
+      linkedin: "https://www.linkedin.com/in/nurjihaan-hasna-haasyimiyyah-a86a45388/",
+      github: "#"
+    }
+  },
+  {
+    id: 27,
+    name: "Reihan Muhammad Ikhlas",
+    nim: "607012500018",
+    role: "UI/UX Designer",
+    image: "/Image/reihan.jpg",
+    bio: "Suka mendesain tampilan web yang user friendly.",
+    projects: "Gerai.Fox",
+    skills: ["Figma", "Adobe XD"],
+    socials: {
+      instagram: "https://www.instagram.com/reih_muha_/",
+      linkedin: "https://www.linkedin.com/in/reihan-muhammad-ikhlas-b91079389/",
+      github: "#"
+    }
+  },
+  {
+    id: 28,
+    name: "Vito Mayshandi",
+    nim: "607012500094",
+    role: "UI/UX Designer",
+    image: "/Image/vito.jpg",
+    bio: "Suka mendesain tampilan web yang user friendly.",
+    projects: "Gerai.Fox",
+    skills: ["Figma", "Adobe XD"],
+    socials: {
+      instagram: "https://www.instagram.com/vitomyshnd/",
+      linkedin: "https://www.linkedin.com/in/vito-mayshandi-10974a36b/",
       github: "#"
     }
   }
@@ -538,18 +613,18 @@ const projectsData = [
 ];
 
 const memoriesData = [
-  { type: 'image', src: "/Image/memory/bareng-kak feb.jpg", caption: "Campus Tour With Kak Feb" },
-  { type: 'image', src: "/Image/memory/selesai-studentfair.jpg", caption: "Campus Tour" },
-  { type: 'image', src: "/Image/memory/foto-grup cewek.jpg", caption: "Campus Tour With Kak Feb" },
-  { type: 'image', src: "/Image/memory/Studio1.jpg", caption: "Class Photo Session" },
-  { type: 'image', src: "/Image/memory/Studio3.jpg", caption: "Class Photo Session" },
-  { type: 'image', src: "/Image/memory/Studio2.jpg", caption: "Class Photo Session" },
-  { type: 'image', src: "/Image/memory/last-pkkmb1.jpg", caption: "Last Day PKKMB" },
-  { type: 'image', src: "/Image/memory/last-pkkmb2.jpg", caption: "Last Day PKKMB" },
-  { type: 'image', src: "/Image/memory/last-pkkmb3.jpg", caption: "Last Day PKKMB" },
-  { type: 'image', src: "/Image/memory/LO2.jpg", caption: "Best Liaison Officer" },
-  { type: 'image', src: "/Image/memory/LO1.jpg", caption: "Best Liaison Officer" },
-  { type: 'image', src: "/Image/memory/LO3.jpg", caption: "Best Liaison Officer" },
+  { type: 'image', src: "/Image/memory/bareng_kak_feb.jpg", caption: "Campus Tour With Kak Feb" },
+  { type: 'image', src: "/Image/memory/selesai_studentfair.jpg", caption: "Campus Tour" },
+  { type: 'image', src: "/Image/memory/foto_grup_cewek.jpg", caption: "Campus Tour With Kak Feb" },
+  { type: 'image', src: "/Image/memory/studio1.jpg", caption: "Class Photo Session" },
+  { type: 'image', src: "/Image/memory/studio3.jpg", caption: "Class Photo Session" },
+  { type: 'image', src: "/Image/memory/studio2.jpg", caption: "Class Photo Session" },
+  { type: 'image', src: "/Image/memory/last_pkkmb1.jpg", caption: "Last Day PKKMB" },
+  { type: 'image', src: "/Image/memory/last_pkkmb2.jpg", caption: "Last Day PKKMB" },
+  { type: 'image', src: "/Image/memory/last_pkkmb3.jpg", caption: "Last Day PKKMB" },
+  { type: 'image', src: "/Image/memory/lo2.jpg", caption: "Best Liaison Officer" },
+  { type: 'image', src: "/Image/memory/lo1.jpg", caption: "Best Liaison Officer" },
+  { type: 'image', src: "/Image/memory/lo3.jpg", caption: "Best Liaison Officer" },
   { type: 'image', src: "/Image/memory/praktikum1.jpeg", caption: "After Coding Session" },
   { type: 'image', src: "/Image/memory/praktikum2.jpeg", caption: "After Coding Session" },
   { type: 'image', src: "/Image/memory/random5.jpg", caption: "Mirror Selfie" },

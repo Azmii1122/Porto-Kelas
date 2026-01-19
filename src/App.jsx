@@ -134,13 +134,22 @@ const customStyles = `
   }
 `;
 
+// --- HELPER FUNCTION UNTUK GAMBAR RUSAK ---
+const handleImageError = (e) => {
+  e.target.src = "https://api.dicebear.com/7.x/avataaars/svg?seed=Fallback&backgroundColor=cce4f7";
+};
+
+const handleProjectImageError = (e) => {
+  e.target.src = "https://placehold.co/600x400/1e293b/white?text=Project+Image";
+};
+
 // --- DATA ---
 
 const lecturerData = {
   name: "M. Yusuf Ramadhan, S.AB., M.AB.",
   role: "Academic Advisor",
   quote: "Membangun pondasi logika yang kuat untuk masa depan digital.",
-  image: "/assets/pakyusuf.png", // Path diperbaiki untuk Vercel
+  image: "/Image/pakyusuf.png", // Path diperbaiki: /Image/
   email: "muhamadyusuframadhan@telkomuniversity.ac.id"
 };
 
@@ -151,7 +160,7 @@ const studentsData = [
     name: "Denissa Rahma Putri (Ketua)",
     nim: "607012500052",
     role: "Fullstack Dev",
-    image: "/public/image/Denisa.jpg", // Path diperbaiki
+    image: "/Image/denisa.jpg",
     bio: "Tulis deskripsi singkat atau kata-kata mutiara mahasiswa ini di sini.",
     projects: "Olahin",
     skills: ["HTML", "CSS", "Figma"],
@@ -166,7 +175,7 @@ const studentsData = [
     name: "Rajiel Jibran Ziya Zidna Fann",
     nim: "607012500099",
     role: "UI/UX Designer",
-    image: "/images/rajiel.jpg", // Path diperbaiki
+    image: "/Image/rajiel.jpg",
     bio: "Suka mendesain tampilan web yang user friendly.",
     projects: "KostInt",
     skills: ["Figma", "Adobe XD", "Photoshop", "Illustrator", "HTML", "CSS", "JavaScript"],
@@ -181,7 +190,7 @@ const studentsData = [
     name: "Dinda Revalina Rahman",
     nim: "607012500002",
     role: "Fullstack Dev",
-    image: "/images/", // Harap diisi nama file fotonya
+    image: "/Image/dinda.jpg", // Sesuaikan nama file asli di folder Image
     bio: "Tulis deskripsi singkat atau kata-kata mutiara mahasiswa ini di sini.",
     projects: "Olahin",
     skills: ["HTML", "CSS", "Figma"],
@@ -196,7 +205,7 @@ const studentsData = [
     name: "Rangga Putra Ananda",
     nim: "607012500004",
     role: "UI/UX Designer",
-    image: "/images/rangga.jpg", // Path diperbaiki
+    image: "/Image/rangga.jpg",
     bio: "Suka mendesain tampilan web yang user friendly.",
     projects: "Gerai.Fox",
     skills: ["Figma", "Adobe XD"],
@@ -211,7 +220,7 @@ const studentsData = [
     name: "Habib Azmi",
     nim: "607012500006",
     role: "UI/UX Designer",
-    image: "/images/habib.jpg", // Path diperbaiki
+    image: "/Image/habib.jpg",
     bio: "Tulis deskripsi singkat atau kata-kata mutiara mahasiswa ini di sini.",
     projects: "Ascenda",
     skills: ["HTML", "CSS", "Figma"],
@@ -226,7 +235,7 @@ const studentsData = [
     name: "Nevi Suryani",
     nim: "607012500008",
     role: "UI/UX Designer",
-    image: "/images/", 
+    image: "/Image/nevi.jpg", // Pastikan file nevi.jpg ada
     bio: "Suka mendesain tampilan web yang user friendly.",
     projects: "Lombify",
     skills: ["Figma", "Adobe XD"],
@@ -241,7 +250,7 @@ const studentsData = [
     name: "Afifa",
     nim: "607012530001",
     role: "Fullstack Dev",
-    image: "/images/",
+    image: "/Image/afifa.jpg",
     bio: ".",
     projects: "TuNotes",
     skills: ["HTML", "CSS", "Figma"],
@@ -256,7 +265,7 @@ const studentsData = [
     name: "Al Nazira Sudirman",
     nim: "607012500093",
     role: "Data Analyst",
-    image: "/images/",
+    image: "/Image/alnazira.jpg",
     bio: "Suka mendesain tampilan web yang user friendly.",
     projects: "BeautyVerse",
     skills: ["Figma", "Adobe XD"],
@@ -271,7 +280,7 @@ const studentsData = [
     name: "Almira Kalila Hatibie",
     nim: "607012500059",
     role: "Mobile Dev",
-    image: "/images/",
+    image: "/Image/almira.jpg",
     bio: "Tulis deskripsi singkat atau kata-kata mutiara mahasiswa ini di sini.",
     projects: "Studymate",
     skills: ["HTML", "CSS", "Figma"],
@@ -286,7 +295,7 @@ const studentsData = [
     name: "Angel Junifa",
     nim: "607012500014",
     role: "Project Manager",
-    image: "/images/",
+    image: "/Image/angel.jpg",
     bio: "Suka mendesain tampilan web yang user friendly.",
     projects: "KostInt",
     skills: ["Figma", "Adobe XD"],
@@ -301,7 +310,7 @@ const studentsData = [
     name: "Apriano Trisvan Yulistira",
     nim: "607012500077",
     role: "Fullstack Dev",
-    image: "/images/",
+    image: "/Image/apriano.jpg",
     bio: ".",
     projects: "Studymate",
     skills: ["HTML", "CSS", "Figma"],
@@ -316,7 +325,7 @@ const studentsData = [
     name: "Azzahra Aulia Rahmah",
     nim: "607012500084",
     role: "Programmer",
-    image: "/images/",
+    image: "/Image/azzahra.jpg",
     bio: "Suka mendesain tampilan web yang user friendly.",
     projects: "LUMIERE",
     skills: ["Figma", "Adobe XD"],
@@ -331,7 +340,7 @@ const studentsData = [
     name: "Daffa Satrya Bara Pratama",
     nim: "607012500048",
     role: "Cyber Security",
-    image: "/images/",
+    image: "/Image/daffa.jpg",
     bio: "Tulis deskripsi singkat atau kata-kata mutiara mahasiswa ini di sini.",
     projects: "Ascenda",
     skills: ["HTML", "CSS", "Figma"],
@@ -346,7 +355,7 @@ const studentsData = [
     name: "Dava Aryadhinata",
     nim: "607012500035",
     role: "UI/UX Designer",
-    image: "/images/",
+    image: "/Image/dava.jpg",
     bio: "Suka mendesain tampilan web yang user friendly.",
     projects: "LUMIERE",
     skills: ["Figma", "Adobe XD"],
@@ -361,7 +370,7 @@ const studentsData = [
     name: "Deandra Ramadhani",
     nim: "607012500060",
     role: "Project Manager",
-    image: "/images/deandra.jpg", // Path diperbaiki
+    image: "/Image/deandra.jpg",
     bio: "Kalau Stress Jajan Popmart Solusinya.",
     projects: "KostInt",
     skills: ["HTML", "CSS", "Figma", "Canva"],
@@ -376,7 +385,7 @@ const studentsData = [
     name: "Delia Sahla Nufadilah",
     nim: "607012500096",
     role: "UI/UX Designer",
-    image: "/images/",
+    image: "/Image/delia.jpg",
     bio: "Suka mendesain tampilan web yang user friendly.",
     projects: "BeautyVerse",
     skills: ["Figma", "Adobe XD"],
@@ -391,7 +400,7 @@ const studentsData = [
     name: "Laikaa Athaya Putri Khanza",
     nim: "607012500103",
     role: "Cyber Security",
-    image: "/images/",
+    image: "/Image/laikaa.jpg",
     bio: "Suka mendesain tampilan web yang user friendly.",
     projects: "BeautyVerse",
     skills: ["Figma", "Adobe XD"],
@@ -406,7 +415,7 @@ const studentsData = [
     name: "Farrel Dafikhaliq",
     nim: "607012500012",
     role: "Fullstack Dev",
-    image: "/images/",
+    image: "/Image/farrel.jpg",
     bio: "Tulis deskripsi singkat atau kata-kata mutiara mahasiswa ini di sini.",
     projects: "Olahin",
     skills: ["HTML", "CSS", "Figma"],
@@ -421,7 +430,7 @@ const studentsData = [
     name: "Lagyf Husayni",
     nim: "607012500026",
     role: "Fullstack Dev",
-    image: "/images/",
+    image: "/Image/lagyf.jpg",
     bio: "Suka mendesain tampilan web yang user friendly.",
     projects: "Studymate",
     skills: ["Figma", "Adobe XD"],
@@ -436,7 +445,7 @@ const studentsData = [
     name: "Marcel Agustinus Hutahaean",
     nim: "607012500076",
     role: "Progammer",
-    image: "/images/",
+    image: "/Image/marcel.jpg",
     bio: "Tulis deskripsi singkat atau kata-kata mutiara mahasiswa ini di sini.",
     projects: "Lombify",
     skills: ["HTML", "CSS", "Figma"],
@@ -451,7 +460,7 @@ const studentsData = [
     name: "Mochamad Hafizh Hakwan",
     nim: "607012500109",
     role: "UI/UX Designer",
-    image: "/images/",
+    image: "/Image/hafizh.jpg",
     bio: "Humble Person (Yapper Final Boss)",
     projects: "Gerai.Fox",
     skills: ["Figma", "Adobe XD"],
@@ -466,7 +475,7 @@ const studentsData = [
     name: "Muhammad Fadhil Abdillah",
     nim: "607012500087",
     role: "Mobile Dev",
-    image: "/images/",
+    image: "/Image/fadhil.jpg",
     bio: "Suka mendesain tampilan web yang user friendly.",
     projects: "KostInt",
     skills: ["Figma", "Adobe XD"],
@@ -481,7 +490,7 @@ const studentsData = [
     name: "Daffa Satrya Bara Pratama",
     nim: "607012500048",
     role: "Cyber Security",
-    image: "/images/",
+    image: "/Image/daffa.jpg",
     bio: "Tulis deskripsi singkat atau kata-kata mutiara mahasiswa ini di sini.",
     projects: "Ascenda",
     skills: ["HTML", "CSS", "Figma"],
@@ -496,7 +505,7 @@ const studentsData = [
     name: "Dava Aryadhinata",
     nim: "607012500035",
     role: "UI/UX Designer",
-    image: "/images/",
+    image: "/Image/dava.jpg",
     bio: "Suka mendesain tampilan web yang user friendly.",
     projects: "LUMIERE",
     skills: ["Figma", "Adobe XD"],
@@ -511,7 +520,7 @@ const studentsData = [
     name: "Deandra Ramadhani",
     nim: "607012500060",
     role: "Project Manager",
-    image: "/images/",
+    image: "/Image/deandra.jpg",
     bio: "Tulis deskripsi singkat atau kata-kata mutiara mahasiswa ini di sini.",
     projects: "KostInt",
     skills: ["HTML", "CSS", "Figma"],
@@ -526,7 +535,7 @@ const studentsData = [
     name: "Delia Sahla Nufadilah",
     nim: "607012500096",
     role: "UI/UX Designer",
-    image: "/images/",
+    image: "/Image/delia.jpg",
     bio: "Suka mendesain tampilan web yang user friendly.",
     projects: "BeautyVerse",
     skills: ["Figma", "Adobe XD"],
@@ -541,7 +550,7 @@ const studentsData = [
     name: "Delia Sahla Nufadilah",
     nim: "607012500096",
     role: "UI/UX Designer",
-    image: "/images/",
+    image: "/Image/delia.jpg",
     bio: "Suka mendesain tampilan web yang user friendly.",
     projects: "BeautyVerse",
     skills: ["Figma", "Adobe XD"],
@@ -556,7 +565,7 @@ const studentsData = [
     name: "Delia Sahla Nufadilah",
     nim: "607012500096",
     role: "UI/UX Designer",
-    image: "/images/",
+    image: "/Image/delia.jpg",
     bio: "Suka mendesain tampilan web yang user friendly.",
     projects: "BeautyVerse",
     skills: ["Figma", "Adobe XD"],
@@ -604,30 +613,30 @@ const projectsData = [
 ];
 
 const memoriesData = [
-  { type: 'image', src: "/images/memory/bareng-kak feb.jpg", caption: "Campus Tour With Kak Feb" },
-  { type: 'image', src: "/images/memory/selesai-studentfair.jpg", caption: "Campus Tour" },
-  { type: 'image', src: "/images/memory/foto-grup cewek.jpg", caption: "Campus Tour With Kak Feb" },
-  { type: 'image', src: "/images/memory/Studio1.jpg", caption: "Class Photo Session" },
-  { type: 'image', src: "/images/memory/Studio3.jpg", caption: "Class Photo Session" },
-  { type: 'image', src: "/images/memory/Studio2.jpg", caption: "Class Photo Session" },
-  { type: 'image', src: "/images/memory/last-pkkmb1.jpg", caption: "Last Day PKKMB" },
-  { type: 'image', src: "/images/memory/last-pkkmb2.jpg", caption: "Last Day PKKMB" },
-  { type: 'image', src: "/images/memory/last-pkkmb3.jpg", caption: "Last Day PKKMB" },
-  { type: 'image', src: "/images/memory/LO2.jpg", caption: "Best Liaison Officer" },
-  { type: 'image', src: "/images/memory/LO1.jpg", caption: "Best Liaison Officer" },
-  { type: 'image', src: "/images/memory/LO3.jpg", caption: "Best Liaison Officer" },
-  { type: 'image', src: "/images/memory/praktikum1.jpeg", caption: "After Coding Session" },
-  { type: 'image', src: "/images/memory/praktikum2.jpeg", caption: "After Coding Session" },
-  { type: 'image', src: "/images/memory/random5.jpg", caption: "Mirror Selfie" },
-  { type: 'image', src: "/images/memory/random6.jpg", caption: "Mirror Selfie" },
-  { type: 'image', src: "/images/memory/random7.jpg", caption: "Mirror Selfie" },
-  { type: 'image', src: "/images/memory/random8.jpg", caption: "Mirror Selfie" },
-  { type: 'image', src: "/images/memory/random9.jpg", caption: "Mirror Selfie" },
-  { type: 'image', src: "/images/memory/random10.jpg", caption: "Mirror Selfie" },
-  { type: 'image', src: "/images/memory/random11.jpg", caption: "Mirror Selfie" },
-  { type: 'image', src: "/images/memory/random12.jpg", caption: "Mirror Selfie" },
-  { type: 'image', src: "/images/memory/random13.jpg", caption: "Mirror Selfie" },
-  { type: 'image', src: "/images/memory/random14.jpg", caption: "Mirror Selfie" },
+  { type: 'image', src: "/Image/memory/bareng-kak feb.jpg", caption: "Campus Tour With Kak Feb" },
+  { type: 'image', src: "/Image/memory/selesai-studentfair.jpg", caption: "Campus Tour" },
+  { type: 'image', src: "/Image/memory/foto-grup cewek.jpg", caption: "Campus Tour With Kak Feb" },
+  { type: 'image', src: "/Image/memory/Studio1.jpg", caption: "Class Photo Session" },
+  { type: 'image', src: "/Image/memory/Studio3.jpg", caption: "Class Photo Session" },
+  { type: 'image', src: "/Image/memory/Studio2.jpg", caption: "Class Photo Session" },
+  { type: 'image', src: "/Image/memory/last-pkkmb1.jpg", caption: "Last Day PKKMB" },
+  { type: 'image', src: "/Image/memory/last-pkkmb2.jpg", caption: "Last Day PKKMB" },
+  { type: 'image', src: "/Image/memory/last-pkkmb3.jpg", caption: "Last Day PKKMB" },
+  { type: 'image', src: "/Image/memory/LO2.jpg", caption: "Best Liaison Officer" },
+  { type: 'image', src: "/Image/memory/LO1.jpg", caption: "Best Liaison Officer" },
+  { type: 'image', src: "/Image/memory/LO3.jpg", caption: "Best Liaison Officer" },
+  { type: 'image', src: "/Image/memory/praktikum1.jpeg", caption: "After Coding Session" },
+  { type: 'image', src: "/Image/memory/praktikum2.jpeg", caption: "After Coding Session" },
+  { type: 'image', src: "/Image/memory/random5.jpg", caption: "Mirror Selfie" },
+  { type: 'image', src: "/Image/memory/random6.jpg", caption: "Mirror Selfie" },
+  { type: 'image', src: "/Image/memory/random7.jpg", caption: "Mirror Selfie" },
+  { type: 'image', src: "/Image/memory/random8.jpg", caption: "Mirror Selfie" },
+  { type: 'image', src: "/Image/memory/random9.jpg", caption: "Mirror Selfie" },
+  { type: 'image', src: "/Image/memory/random10.jpg", caption: "Mirror Selfie" },
+  { type: 'image', src: "/Image/memory/random11.jpg", caption: "Mirror Selfie" },
+  { type: 'image', src: "/Image/memory/random12.jpg", caption: "Mirror Selfie" },
+  { type: 'image', src: "/Image/memory/random13.jpg", caption: "Mirror Selfie" },
+  { type: 'image', src: "/Image/memory/random14.jpg", caption: "Mirror Selfie" },
 ];
 
 // --- COMPONENTS ---
@@ -899,6 +908,7 @@ const StudentSlider = ({ students, onSelect }) => {
                     src={item.data.image} 
                     alt={item.data.name} 
                     className={`rounded-full object-cover border-4 border-slate-900 bg-slate-800 transition-all ${isCurrent ? 'w-32 h-32 md:w-40 md:h-40 border-blue-500' : 'w-24 h-24 border-slate-700'}`}
+                    onError={handleImageError}
                   />
                 </div>
                 
@@ -927,7 +937,12 @@ const StudentCard = ({ student, onClick }) => (
     
     <div className="flex items-center justify-between mb-6">
       <div className="relative">
-        <img src={student.image} alt={student.name} className="w-16 h-16 rounded-2xl bg-slate-800 object-cover border border-slate-700 group-hover:border-blue-500 transition-colors" />
+        <img 
+          src={student.image} 
+          alt={student.name} 
+          className="w-16 h-16 rounded-2xl bg-slate-800 object-cover border border-slate-700 group-hover:border-blue-500 transition-colors"
+          onError={handleImageError}
+        />
       </div>
       <div className="px-2 py-1 bg-slate-800 rounded-md border border-slate-700">
          <ArrowRight size={16} className="text-slate-500 group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
@@ -949,7 +964,12 @@ const ProjectCard = ({ project }) => (
   <div className="glass-card rounded-2xl overflow-hidden group hover:border-blue-500/30 transition-all duration-500 h-full flex flex-col">
     <div className="h-56 overflow-hidden relative">
       <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors z-10"></div>
-      <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+      <img 
+        src={project.image} 
+        alt={project.title} 
+        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+        onError={handleProjectImageError}
+      />
       <div className="absolute top-4 right-4 px-3 py-1 bg-slate-950/80 backdrop-blur text-xs font-bold rounded-full border border-white/10 text-white z-20 shadow-lg">
         {project.status}
       </div>
@@ -980,7 +1000,12 @@ const StudentModal = ({ student, onClose }) => {
         {/* Sidebar Image */}
         <div className="w-full md:w-2/5 bg-slate-800/50 relative p-8 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-white/5">
           <div className="absolute inset-0 bg-gradient-to-b from-blue-500/5 to-transparent"></div>
-          <img src={student.image} alt={student.name} className="w-48 h-48 rounded-full border-4 border-blue-500 shadow-xl shadow-blue-500/20 mb-6 relative z-10 object-cover bg-slate-800" />
+          <img 
+            src={student.image} 
+            alt={student.name} 
+            className="w-48 h-48 rounded-full border-4 border-blue-500 shadow-xl shadow-blue-500/20 mb-6 relative z-10 object-cover bg-slate-800"
+            onError={handleImageError}
+          />
           <h2 className="text-2xl font-bold text-white relative z-10">{student.name}</h2>
           <p className="text-blue-400 font-mono text-sm relative z-10 mb-8">{student.nim}</p>
           
@@ -1164,7 +1189,7 @@ const App = () => {
               <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group w-[92%] mx-auto mb-12">
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent z-10"></div>
                 <img 
-                  src="/public/image/class_photo.jpg" 
+                  src="/Image/class_photo.jpg" 
                   alt="Foto Kelas Formal" 
                   className="w-full h-auto transform group-hover:scale-105 transition-transform duration-1000"
                 />
@@ -1320,7 +1345,12 @@ const App = () => {
               {memoriesData.map((memory, idx) => (
                 <ScrollReveal key={idx} delay={idx % 3 * 100}>
                   <div className="group relative rounded-2xl overflow-hidden cursor-pointer border border-white/5 hover:border-blue-500/50 transition-colors aspect-video shadow-lg">
-                    <img src={memory.src} alt={memory.caption} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <img 
+                      src={memory.src} 
+                      alt={memory.caption} 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                      onError={handleImageError}
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                       <div>
                         <span className="block text-blue-400 text-xs font-bold uppercase tracking-wider mb-1">Moment</span>
